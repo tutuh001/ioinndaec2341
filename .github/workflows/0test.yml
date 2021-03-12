@@ -1,0 +1,34 @@
+name: test
+
+on:
+  workflow_dispatch:
+  schedule:
+     - cron: '1 1 * * *'
+  watch:
+    types: started
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        JD_COOKIE: ${{ secrets.JD_COOKIE }}
+    steps:
+      - name: Checkout
+        run: |
+          git clone https://github.com/tutuh001/jd_action.git ~/jd_action
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        run: |
+          cd ~/jd_action
+          npm install
+      - name: '运行 【test】'
+        if: env.JD_COOKIE
+        run: |
+          cd ~/jd_action
+          node jd_5g.js
+        env:
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
