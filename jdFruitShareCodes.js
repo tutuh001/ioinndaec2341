@@ -1,4 +1,5 @@
 /*
+/*
 东东农场互助码
 此文件为Node.js专用。其他用户请忽略
 支持京东N个账号
@@ -31,3 +32,4 @@ for (let i = 0; i < FruitShareCodes.length; i++) {
   const index = (i + 1 === 1) ? '' : (i + 1);
   exports['FruitShareCode' + index] = FruitShareCodes[i];
 }
+*/
