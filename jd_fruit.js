@@ -29,10 +29,10 @@ let cookiesArr = [], cookie = '', jdFruitShareArr = [], isBox = false, notify, n
 //此此内容是IOS用户下载脚本到本地使用，填写互助码的地方，同一京东账号的好友互助码请使用@符号隔开。
 //下面给出两个账号的填写示例（iOS只支持2个京东账号）
 let shareCodes = [ // 这个列表填入你要助力的好友的shareCode
-   //账号一的好友shareCode,不同好友的shareCode中间用@符号隔开
-  '',
-  //账号二的好友shareCode,不同好友的shareCode中间用@符号隔开
-  '',
+  'da9bda01eb304e9fb8392acdf4319822@f132e80ce9e148e59ca91bed5f8307dd@518b0e6aa56a499081420cb1922aef38@fb8a4c4a908d4abf82cffb98fa55e144@12fc791984e44ab48b363e2130c3126b',//账号一的好友shareCode,不同好友中间用@符号隔开女王
+  '301dc6a424f1441f9585f9da1def4051@f132e80ce9e148e59ca91bed5f8307dd@518b0e6aa56a499081420cb1922aef38@fb8a4c4a908d4abf82cffb98fa55e144@12fc791984e44ab48b363e2130c3126b',//账号二的好友shareCode，不同好友中间用@符号隔开女王公
+  'da9bda01eb304e9fb8392acdf4319822@301dc6a424f1441f9585f9da1def4051@f132e80ce9e148e59ca91bed5f8307dd@518b0e6aa56a499081420cb1922aef38@fb8a4c4a908d4abf82cffb98fa55e144',//账号三的好友shareCode，不同好友中间用@符号隔开自己
+  'da9bda01eb304e9fb8392acdf4319822@301dc6a424f1441f9585f9da1def4051@518b0e6aa56a499081420cb1922aef38@fb8a4c4a908d4abf82cffb98fa55e144@12fc791984e44ab48b363e2130c3126b',//账号四的好友shareCode，不同好友中间用@符号隔开女王小号
 ]
 let message = '', subTitle = '', option = {}, isFruitFinished = false;
 const retainWater = 100;//保留水滴大于多少g,默认100g;
