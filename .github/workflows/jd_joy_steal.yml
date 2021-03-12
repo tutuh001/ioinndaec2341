@@ -3,7 +3,7 @@ name: 京东宠汪汪偷好友积分与狗粮
 on:
   workflow_dispatch:
   schedule:
-     - cron: '0 16,22 * * *'
+     - cron: '2 16,22 * * *'
   watch:
     types: started
 jobs:
