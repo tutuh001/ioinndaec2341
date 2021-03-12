@@ -15,19 +15,19 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/tutuh001/jd_action.git ~/jd_action
+          git clone https://github.com/tutuh001/ioinndaec2341.git ~/ioinndaec2341
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
       - name: npm install
         run: |
-          cd ~/jd_action
+          cd ~/ioinndaec2341
           npm install
       - name: '运行 【京东抽奖机】'
         if: env.JD_COOKIE
         run: |
-          cd ~/jd_action
+          cd ~/ioinndaec2341
           node jd_lotteryMachine.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
