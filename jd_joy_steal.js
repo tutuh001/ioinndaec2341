@@ -53,7 +53,7 @@ let message = '', subTitle = '';
 
 let jdNotify = false;//是否开启静默运行，false关闭静默运行(即通知)，true打开静默运行(即不通知)
 let jdJoyHelpFeed = true;//是否给好友喂食，false为不给喂食，true为给好友喂食，默认不给好友喂食
-let jdJoyStealCoin = true;//是否偷好友积分与狗粮，false为否，true为是，默认是偷
+let jdJoyStealCoin = false;//是否偷好友积分与狗粮，false为否，true为是，默认是偷
 const JD_API_HOST = 'https://jdjoy.jd.com/pet';
 //是否给好友喂食
 let ctrTemp;
