@@ -1,9 +1,9 @@
-name: 京东东东小窝
+name: 宠汪汪积分兑换奖
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '0 23 * * *'
+     - cron: '0 0,8,16 * * *'
   watch:
     types: started
 jobs:
@@ -24,16 +24,10 @@ jobs:
         run: |
           cd ~/ioinndaec2341
           npm install
-      - name: '运行 【京东东东小窝】'
+      - name: '运行 【宠汪汪积分兑换奖】'
         if: env.JD_COOKIE
         run: |
           cd ~/ioinndaec2341
-          node jd_small_home.js
+          node jd_joy_reward.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
