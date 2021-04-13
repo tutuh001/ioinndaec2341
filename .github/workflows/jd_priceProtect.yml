@@ -1,9 +1,9 @@
-name: 京东天天加速
+name: 京东保价
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '20 */3 * * *'
+     - cron: '20 5 * * *'
   watch:
     types: started
 jobs:
@@ -24,10 +24,10 @@ jobs:
         run: |
           cd ~/ioinndaec2341
           npm install
-      - name: '运行 【京东天天加速】'
+      - name: '运行 【京东保价】'
         if: env.JD_COOKIE
         run: |
           cd ~/ioinndaec2341
-          node jd_speed.js
+          node jd_priceProtect.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
