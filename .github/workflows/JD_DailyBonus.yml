@@ -30,5 +30,4 @@ jobs:
           cd ~/ioinndaec2341
           node jd_bean_sign.js
         env:
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-       
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}   
