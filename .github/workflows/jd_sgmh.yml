@@ -1,9 +1,9 @@
-name: 京东快递签到
+name: 京东闪购盲盒
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '30 2 * * *'
+     - cron: '30 16 * * *'
   watch:
     types: started
 jobs:
@@ -24,10 +24,10 @@ jobs:
         run: |
           cd ~/ioinndaec2341
           npm install
-      - name: '运行 【京东快递签到】'
+      - name: '运行 【京东闪购盲盒】'
         if: env.JD_COOKIE
         run: |
           cd ~/ioinndaec2341
-          node jd_kd.js
+          node jd_sgmh.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
