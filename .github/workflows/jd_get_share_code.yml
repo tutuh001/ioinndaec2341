@@ -1,9 +1,9 @@
-name: test
+name: 京东互助码
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '1 1 * * *'
+     - cron: '5 1 * * *'
   watch:
     types: started
 jobs:
@@ -15,20 +15,19 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/tutuh001/jd_action.git ~/jd_action
+          git clone https://github.com/tutuh001/ioinndaec2341.git ~/ioinndaec2341
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
       - name: npm install
         run: |
-          cd ~/jd_action
+          cd ~/ioinndaec2341
           npm install
-      - name: '运行 【test】'
+      - name: '运行 【互助码】'
         if: env.JD_COOKIE
         run: |
-          cd ~/jd_action
-          node jd_5g.js
+          cd ~/ioinndaec2341
+          node jd_get_share_code.js 
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
