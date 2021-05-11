@@ -30,4 +30,5 @@ jobs:
           cd ~/ioinndaec2341
           node jd_get_share_code.js 
         env:
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
