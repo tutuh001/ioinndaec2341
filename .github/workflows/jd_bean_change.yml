@@ -29,5 +29,5 @@ jobs:
         run: |
           cd ~/ioinndaec2341
           node jd_bean_change.js
-        env:
+     
           
