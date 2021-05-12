@@ -29,6 +29,4 @@ jobs:
         run: |
           cd ~/ioinndaec2341
           node jd_syj.js
-        env:
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+    
