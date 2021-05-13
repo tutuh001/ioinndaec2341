@@ -1,9 +1,9 @@
-name: 京东十元街
+name: 京东大转盘
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '10 7 * * *'
+     - cron: '1 2 * * *'
   watch:
     types: started
 jobs:
@@ -28,4 +28,4 @@ jobs:
         if: env.JD_COOKIE
         run: |
           cd ~/ioinndaec2341
-          node jd_syj.js    
+          node jd_dzp.js   
