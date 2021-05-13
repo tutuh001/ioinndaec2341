@@ -1,0 +1,31 @@
+name: 京东赚京豆
+
+on:
+  workflow_dispatch:
+  schedule:
+     - cron: '8 15,16,23 * * *'
+  watch:
+    types: started
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        JD_COOKIE: ${{ secrets.JD_COOKIE }}
+    steps:
+      - name: Checkout
+        run: |
+          git clone https://github.com/tutuh001/ioinndaec2341.git ~/ioinndaec2341
+      - name: Use Node.js 15.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15.x
+      - name: npm install
+        run: |
+          cd ~/ioinndaec2341
+          npm install
+      - name: '运行 【京东赚京豆】'
+        if: env.JD_COOKIE
+        run: |
+          cd ~/ioinndaec2341
+          node jd_syj.js
