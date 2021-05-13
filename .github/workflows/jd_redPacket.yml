@@ -3,7 +3,7 @@ name: 京东全民开红包
 on:
   workflow_dispatch:
   schedule:
-     - cron: '0 17 * * *'
+     - cron: '0 17,18,15 * * *'
   watch:
     types: started
 jobs:
