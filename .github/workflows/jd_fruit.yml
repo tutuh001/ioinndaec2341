@@ -3,7 +3,7 @@ name: 京东水果
 on:
   workflow_dispatch:
   schedule:
-     - cron: '25 0,5,10 * * *'
+     - cron: '13 0,5,10 * * *'
   watch:
     types: started
 jobs:
