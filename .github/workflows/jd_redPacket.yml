@@ -1,9 +1,9 @@
-name: 京东全民开红包
+name: 京东818
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '0 17,18,15 * * *'
+     - cron: '0 4,10,16,22 * * *'
   watch:
     types: started
 jobs:
@@ -24,9 +24,9 @@ jobs:
         run: |
           cd ~/ioinndaec2341
           npm install
-      - name: '运行 【京东全民开红包】'
+      - name: '运行 【京东818】'
         if: env.JD_COOKIE
         run: |
           cd ~/ioinndaec2341
-          node jd_redPacket.js
+          node jd_818.js
       
