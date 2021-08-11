@@ -1,9 +1,9 @@
-name: 幸运大转盘
+name: 京东抽奖机
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '12 2 * * *'
+     - cron: '8 17 * * *'
   watch:
     types: started
 jobs:
@@ -24,8 +24,8 @@ jobs:
         run: |
           cd ~/ioinndaec2341
           npm install
-      - name: '运行 【幸运大转盘】'
+      - name: '运行 【京东抽奖机】'
         if: env.JD_COOKIE
         run: |
           cd ~/ioinndaec2341
-          node jd_market_lottery.js
+          node jd_lotteryMachine.js 
