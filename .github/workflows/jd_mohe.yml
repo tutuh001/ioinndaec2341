@@ -24,9 +24,9 @@ jobs:
         run: |
           cd ~/ioinndaec2341
           npm install
-      - name: '运行 【京东闪购盲盒】'
+      - name: '运行 【京东魔盒】'
         if: env.JD_COOKIE
         run: |
           cd ~/ioinndaec2341
-          node jd_sgmh.js
+          node jd_mohe.js
       
