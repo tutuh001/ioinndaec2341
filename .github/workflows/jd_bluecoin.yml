@@ -1,4 +1,4 @@
-name: '0 16 * * *'
+name: 京东京小超兑换奖品
 
 
 on:
@@ -21,7 +21,7 @@ jobs:
       - name: 'Install requirements'
         run: pip install -r ./requirements.txt 
         
-      - name: 'run '0 16 * * *'' 
+      - name: 'run 京东京小超兑换奖品' 
         run: python3 jd_blueCoin.py
         env:
             XMLY_SPEED_COOKIE: ${{ secrets.XMLY_SPEED_COOKIE }}  #必须
