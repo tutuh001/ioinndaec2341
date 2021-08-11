@@ -28,5 +28,5 @@ jobs:
         if: env.JD_COOKIE
         run: |
           cd ~/ioinndaec2341
-          node jd_blueCoin.js
+          node jd_blueCoin.py
       
