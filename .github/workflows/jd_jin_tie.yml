@@ -1,4 +1,4 @@
-name: 京东抽奖机
+name: 京东领金贴
 
 on:
   workflow_dispatch:
@@ -24,9 +24,9 @@ jobs:
         run: |
           cd ~/ioinndaec2341
           npm install
-      - name: '运行 【京东抽奖机】'
+      - name: '运行 【京东领金贴】'
         if: env.JD_COOKIE
         run: |
           cd ~/ioinndaec2341
-          node jd_lotteryMachine.js
+          node jd_jin_tie.js
    
