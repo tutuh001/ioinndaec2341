@@ -1,4 +1,4 @@
-name: 京东闪购盲盒
+name: 京东魔盒
 
 on:
   workflow_dispatch:
