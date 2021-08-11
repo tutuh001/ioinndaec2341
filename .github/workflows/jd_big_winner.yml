@@ -1,9 +1,9 @@
-name: 省钱大赢家之翻翻乐
+name: 发财大赢家
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '20 * * * *'
+     - cron: '12 16 * * *'
   watch:
     types: started
 jobs:
@@ -24,8 +24,8 @@ jobs:
         run: |
           cd ~/ioinndaec2341
           npm install
-      - name: '运行 【省钱大赢家之翻翻乐】'
+      - name: '运行 【发财大赢家】'
         if: env.JD_COOKIE
         run: |
           cd ~/ioinndaec2341
-          node jd_big_winner.js
+          node jd_fcdyj.js
