@@ -1,9 +1,9 @@
-name: 京东宠汪汪
+name: 领金贴
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '6 */3 * * *'
+     - cron: '1 16 * * *'
   watch:
     types: started
 jobs:
@@ -24,9 +24,9 @@ jobs:
         run: |
           cd ~/ioinndaec2341
           npm install
-      - name: '运行 【京东宠汪汪】'
+      - name: '运行 【领金贴】'
         if: env.JD_COOKIE
         run: |
           cd ~/ioinndaec2341
-          node jd_joy.js
+          node jd_jin_tie.js
       
