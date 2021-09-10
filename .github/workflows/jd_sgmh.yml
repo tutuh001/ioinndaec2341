@@ -1,9 +1,9 @@
-name: 京东保价
+name: 闪购盲盒
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '20 5 * * *'
+     - cron: '6 0 * * *'
   watch:
     types: started
 jobs:
@@ -24,9 +24,9 @@ jobs:
         run: |
           cd ~/ioinndaec2341
           npm install
-      - name: '运行 【京东保价】'
+      - name: '运行 【闪购盲盒】'
         if: env.JD_COOKIE
         run: |
           cd ~/ioinndaec2341
-          node jd_priceProtect.js
+          node jd_sgmh.js
         
