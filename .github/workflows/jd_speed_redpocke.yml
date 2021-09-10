@@ -3,7 +3,7 @@ name: 京东极速版红包
 on:
   workflow_dispatch:
   schedule:
-     - cron: '0 14 * * *'
+     - cron: '20 16,14 * * *'
   watch:
     types: started
 jobs:
@@ -28,7 +28,7 @@ jobs:
         if: env.JD_COOKIE
         run: |
           cd ~/ioinndaec2341
-          node jd_speed_sign.js
+          node jd_speed_redpocke.js
         env:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
