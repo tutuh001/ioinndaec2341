@@ -1,9 +1,9 @@
-name: 宠汪汪积分兑换奖
+name: 金榜创造营
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '0 0,8,16 * * *'
+     - cron: '11 17,14 * * *'
   watch:
     types: started
 jobs:
@@ -24,9 +24,9 @@ jobs:
         run: |
           cd ~/ioinndaec2341
           npm install
-      - name: '运行 【宠汪汪积分兑换奖】'
+      - name: '运行 【金榜创造营】'
         if: env.JD_COOKIE
         run: |
           cd ~/ioinndaec2341
-          node jd_joy_reward.js
+          node jd_gold_creator.js
      
