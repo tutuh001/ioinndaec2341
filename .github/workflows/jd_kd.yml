@@ -1,9 +1,9 @@
-name: 京东魔盒
+name: 京东快递签到
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '30 16 * * *'
+     - cron: '10 16 * * *'
   watch:
     types: started
 jobs:
@@ -24,9 +24,9 @@ jobs:
         run: |
           cd ~/ioinndaec2341
           npm install
-      - name: '运行 【京东魔盒】'
+      - name: '运行 【京东快递签到】'
         if: env.JD_COOKIE
         run: |
           cd ~/ioinndaec2341
-          node jd_mohe.js
+          node jd_kd.js
       
