@@ -1,9 +1,9 @@
-name: 京东京小超兑换奖品
+name: 省钱大赢家之翻翻乐
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '0 16 * * *'
+     - cron: '59 * * * *'
   watch:
     types: started
 jobs:
@@ -24,9 +24,9 @@ jobs:
         run: |
           cd ~/ioinndaec2341
           npm install
-      - name: '运行 【京东京小超兑换奖品】'
+      - name: '运行 【省钱大赢家之翻翻乐】'
         if: env.JD_COOKIE
         run: |
           cd ~/ioinndaec2341
-          node jd_blueCoin.py
+          node jd_big_winner.js
       
