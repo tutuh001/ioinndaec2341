@@ -1,0 +1,33 @@
+name: 京东全民开红包
+on:
+  workflow_dispatch:
+  schedule:
+     - cron: '2 17,18,15 * * *'
+  watch:
+    types: started
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        JD_COOKIE: ${{ secrets.JD_COOKIE }}
+    steps:
+      - name: Checkout
+        run: |
+          git clone https://github.com/tutuh001/ioinndaec2341.git ~/ioinndaec2341
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        run: |
+          cd ~/ioinndaec2341
+          npm install
+      - name: '运行 【京东全民开红包】'
+        if: env.JD_COOKIE
+        run: |
+          cd ~/ioinndaec2341
+          node jd_redPacket.js
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
