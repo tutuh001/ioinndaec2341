@@ -24,17 +24,14 @@ cron "20 8 * * *" script-path=jd_sgmh.js, tag=闪购盲盒
 
  */
 const $ = new Env('闪购盲盒');
+
+console.log('\n====================Hello World====================\n')
+
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 let appId = '1EFRXxg' , homeDataFunPrefix = 'interact_template', collectScoreFunPrefix = 'harmony', message = ''
 let lotteryResultFunPrefix = homeDataFunPrefix, browseTime = 6
-const inviteCodes = [
-  'T01296wuFVpM8lPQCjVQmoaT5kRrbA@T0117a4hAVoY91cCjVQmoaT5kRrbA@T0205KkcGlx_ow-NQWGm7KxACjVQmoaT5kRrbA@T0225KkcRh9I9QfUIh3zlKUJdACjVQmoaT5kRrbA@T018v_50RhoY8VHSIB-b1ACjVQmoaT5kRrbA',
-    'T01296wuFVpM8lPQCjVQmoaT5kRrbA@T0117a4hAVoY91cCjVQmoaT5kRrbA@T0205KkcGlx_ow-NQWGm7KxACjVQmoaT5kRrbA@T0225KkcRh9I9QfUIh3zlKUJdACjVQmoaT5kRrbA@T018v_50RhoY8VHSIB-b1ACjVQmoaT5kRrbA',
-    'T01296wuFVpM8lPQCjVQmoaT5kRrbA@T018v_hyQh8Y81PfKRKb1ACjVQmoaT5kRrbA@T0117a4hAVoY91cCjVQmoaT5kRrbA@T0225KkcRh9I9QfUIh3zlKUJdACjVQmoaT5kRrbA@T018v_50RhoY8VHSIB-b1ACjVQmoaT5kRrbA',
-    'T01296wuFVpM8lPQCjVQmoaT5kRrbA@T018v_hyQh8Y81PfKRKb1ACjVQmoaT5kRrbA@T0117a4hAVoY91cCjVQmoaT5kRrbA@T0205KkcGlx_ow-NQWGm7KxACjVQmoaT5kRrbA@T018v_50RhoY8VHSIB-b1ACjVQmoaT5kRrbA',
-  'T018v_hyQh8Y81PfKRKb1ACjVQmoaT5kRrbA@T0117a4hAVoY91cCjVQmoaT5kRrbA@T0205KkcGlx_ow-NQWGm7KxACjVQmoaT5kRrbA@T0225KkcRh9I9QfUIh3zlKUJdACjVQmoaT5kRrbA'
-];
+const inviteCodes = [''];
 const randomCount = $.isNode() ? 20 : 5;
 const notify = $.isNode() ? require('./sendNotify') : '';
 let merge = {}
@@ -65,17 +62,8 @@ const JD_API_HOST = `https://api.m.jd.com/client.action`;
       $.nickName = '';
       $.beans = 0
       message = ''
-      await TotalBean();
       await shareCodesFormat();
       console.log(`\n******开始【京东账号${$.index}】${$.nickName || $.UserName}*********\n`);
-      if (!$.isLogin) {
-        $.msg($.name, `【提示】cookie已失效`, `京东账号${$.index} ${$.nickName || $.UserName}\n请重新登录获取\nhttps://bean.m.jd.com/bean/signIndex.action`, {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
-
-        if ($.isNode()) {
-          await notify.sendNotify(`${$.name}cookie已失效 - ${$.UserName}`, `京东账号${$.index} ${$.UserName}\n请重新登录获取cookie`);
-        }
-        continue
-      }
       await interact_template_getHomeData()
       await showMsg();
     }
@@ -315,9 +303,7 @@ function readShareCode() {
   console.log(`开始`)
   return new Promise(async resolve => {
     $.get({
-      url: `http://share.turinglabs.net/api/v3/sgmh/query/${randomCount}/`,
-      'timeout': 10000
-    }, (err, resp, data) => {
+      url: `https://api.sharecode.ga/api/sgmh/${randomCount}`, 'timeout': 10000}, (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
@@ -336,50 +322,6 @@ function readShareCode() {
     })
     await $.wait(2000);
     resolve()
-  })
-}
-function TotalBean() {
-  return new Promise(async resolve => {
-    const options = {
-      "url": `https://wq.jd.com/user/info/QueryJDUserInfo?sceneval=2`,
-      "headers": {
-        "Accept": "application/json,text/plain, */*",
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Accept-Language": "zh-cn",
-        "Connection": "keep-alive",
-        "Cookie": cookie,
-        "Referer": "https://wqs.jd.com/my/jingdou/my.shtml?sceneval=2",
-        "User-Agent": $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT : "jdapp;iPhone;9.4.4;14.3;network/4g;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1") : ($.getdata('JDUA') ? $.getdata('JDUA') : "jdapp;iPhone;9.4.4;14.3;network/4g;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1")
-      }
-    }
-    $.post(options, (err, resp, data) => {
-      try {
-        if (err) {
-          console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API请求失败，请检查网路重试`)
-        } else {
-          if (data) {
-            data = JSON.parse(data);
-            if (data['retcode'] === 13) {
-              $.isLogin = false; //cookie过期
-              return
-            }
-            if (data['retcode'] === 0) {
-              $.nickName = (data['base'] && data['base'].nickname) || $.UserName;
-            } else {
-              $.nickName = $.UserName
-            }
-          } else {
-            console.log(`京东服务器返回空数据`)
-          }
-        }
-      } catch (e) {
-        $.logErr(e, resp)
-      } finally {
-        resolve();
-      }
-    })
   })
 }
 function jsonParse(str) {
