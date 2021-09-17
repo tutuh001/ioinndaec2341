@@ -1,9 +1,9 @@
-name: 东东健康社区
+name: 一键保价
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '1 17,22,14 * * *'
+     - cron: '1 20 * * *'
   watch:
     types: started
 jobs:
@@ -24,9 +24,9 @@ jobs:
         run: |
           cd ~/ioinndaec2341
           npm install
-      - name: '运行 【东东健康社区】'
+      - name: '运行 【一键保价】'
         if: env.JD_COOKIE
         run: |
           cd ~/ioinndaec2341
-          node jd_health.js
+          node jd_priceProtect.js
       
