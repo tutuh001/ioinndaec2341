@@ -2,7 +2,7 @@ name: 京东极速版签到+赚现金任务
 on:
   workflow_dispatch:
   schedule:
-     - cron: '2 17,18,15 * * *'
+     - cron: '1 11,23 * * *'
   watch:
     types: started
 jobs:
