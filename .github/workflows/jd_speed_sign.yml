@@ -1,4 +1,4 @@
-name: 京东全民开红包
+name: 京东极速版签到+赚现金任务
 on:
   workflow_dispatch:
   schedule:
@@ -23,11 +23,11 @@ jobs:
         run: |
           cd ~/ioinndaec2341
           npm install
-      - name: '运行 【京东全民开红包】'
+      - name: '运行 【京东极速版签到+赚现金任务】'
         if: env.JD_COOKIE
         run: |
           cd ~/ioinndaec2341
-          node jd_redPacket.js
+          node jd_speed_sign.js
         env:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
